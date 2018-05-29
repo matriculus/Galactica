@@ -27,14 +27,12 @@ while running:
     hits = pygame.sprite.groupcollide(LightSpears, BlackNites, True, True, pygame.sprite.collide_circle)
     for hit in hits:
         explosion_animation(hit, "large")
-        blacknite_explosion.play()
         score += 1
         NewSlave()
 
     hits = pygame.sprite.spritecollide(player, BlackNites, True, pygame.sprite.collide_circle)
     for hit in hits:
         explosion_animation(hit, "large")
-        blacknite_explosion.play()
         running = player.space_crash()
         if player.shield <= 0:
             explosion_animation(player, "large")
@@ -42,12 +40,10 @@ while running:
     hits = pygame.sprite.groupcollide(LightSpears, BlackSpears, True, True)
     for hit in hits:
         explosion_animation(hit, "small")
-        blacknite_explosion.play()
     
     hits = pygame.sprite.spritecollide(player, BlackSpears, True, pygame.sprite.collide_circle)
     for hit in hits:
         explosion_animation(hit, "large")
-        blacknite_explosion.play()
         running = player.spear_crash()
         NewSlave()
         if player.shield <= 0:

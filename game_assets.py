@@ -19,8 +19,6 @@ class Galactican(pygame.sprite.Sprite):
         self.name = player_name
         self.image = player_animation["straight"]
         self.image.set_colorkey(BLACK)
-        # self.image = dummy_player_image
-        # self.image.fill(dummy_player_colour)
         self.rect = self.image.get_rect() # gets the bounding rectangle of the player image
         self.rect.centerx = WIDTH/2
         self.rect.bottom = HEIGHT - 10
@@ -93,10 +91,10 @@ class Galactican(pygame.sprite.Sprite):
         current_time = pygame.time.get_ticks()
         if current_time - self.last_time_shot >= self.shoot_delay:
             self.last_time_shot = current_time
+            shoot_sound.play()
             lightspear = LightSpear(self.rect.centerx, self.rect.top)
             AllSprites.add(lightspear)
             LightSpears.add(lightspear)
-            shoot_sound.play()
     
     def space_crash(self):
         self.shield -= 10
@@ -119,8 +117,6 @@ class Slave(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = choice(blacknite)
         self.image.set_colorkey(BLACK)
-        # self.image = dummy_slave_image
-        # self.image.fill(dummy_slave_colour)
         self.rect = self.image.get_rect()
         self.rect.x, self.rect.bottom = self.random_position()
         self.xspeed, self.yspeed = self.random_speed()
@@ -158,10 +154,10 @@ class Slave(pygame.sprite.Sprite):
         current_time = pygame.time.get_ticks()
         if current_time - self.last_time_shot >= self.shoot_delay:
             self.last_time_shot = current_time
+            shoot_sound.play()
             blackspear = BlackSpear(self.rect.centerx, self.rect.bottom)
             AllSprites.add(blackspear)
             BlackSpears.add(blackspear)
-            shoot_sound.play()
         
 
 class LightSpear(pygame.sprite.Sprite):
@@ -169,8 +165,6 @@ class LightSpear(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = yellowspear
         self.image.set_colorkey(BLACK)
-        # self.image = dummy_ls_image
-        # self.image.fill(dummy_ls_colour)
         self.rect = self.image.get_rect()
         self.rect.centery = y
         self.rect.centerx = x
@@ -186,8 +180,6 @@ class BlackSpear(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = redspear
         self.image.set_colorkey(BLACK)
-        # self.image = dummy_ls_image
-        # self.image.fill(dummy_ls_colour)
         self.rect = self.image.get_rect()
         self.rect.centery = y
         self.rect.centerx = x
@@ -223,6 +215,7 @@ class Explosion(pygame.sprite.Sprite):
                 self.rect.center = center
 
 def explosion_animation(strike, size):
+    blacknite_explosion.play()
     explosion = Explosion(strike.rect.center, size)
     AllSprites.add(explosion)
 
