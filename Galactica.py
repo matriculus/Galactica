@@ -5,7 +5,7 @@ from game_assets import * # importing all game assets
 player = Galactican("Aleena")
 AllSprites.add(player)
 
-for i in range(8):
+for i in range(5):
     NewSlave()
 
 # Game loop
