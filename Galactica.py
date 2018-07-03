@@ -12,6 +12,7 @@ for i in range(5):
 score = 0
 background_music_score.play(loops = -1)
 running = True
+lost = False
 while running:
     # looping at right speed
     clock.tick(FPS)
@@ -33,7 +34,8 @@ while running:
     hits = pygame.sprite.spritecollide(player, BlackNites, True, pygame.sprite.collide_circle)
     for hit in hits:
         explosion_animation(hit, "large")
-        running = player.space_crash()
+        # running = player.space_crash()
+        lost = player.space_crash()
         if player.shield <= 0:
             explosion_animation(player, "large")
 
@@ -44,7 +46,8 @@ while running:
     hits = pygame.sprite.spritecollide(player, BlackSpears, True, pygame.sprite.collide_circle)
     for hit in hits:
         explosion_animation(hit, "large")
-        running = player.spear_crash()
+        # running = player.spear_crash()
+        lost = player.spear_crash()
         NewSlave()
         if player.shield <= 0:
             explosion_animation(player, "large")
@@ -56,6 +59,10 @@ while running:
     AllSprites.draw(main_screen)
     display_text(main_screen, score, SCORE_FONT_SIZE, SCORE_LOCATION)
     shield_bar(main_screen, SHIELD_BAR_LOCATION, player.shield)
+
+    if lost:
+        display_text(main_screen, "Game Over!", GAME_OVER_SIZE, GAME_OVER_LOCATION)
+        display_text(main_screen, score, GAME_OVER_SIZE, GAME_OVER_SCORE_LOCATION)
 
     pygame.display.update()
 

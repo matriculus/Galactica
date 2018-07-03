@@ -99,16 +99,16 @@ class Galactican(pygame.sprite.Sprite):
     def space_crash(self):
         self.shield -= 10
         if self.shield <= 0:
-            return False
-        else:
             return True
+        else:
+            return False
     
     def spear_crash(self):
         self.shield -= 4
         if self.shield <= 0:
-            return False
-        else:
             return True
+        else:
+            return False
 
 class Slave(pygame.sprite.Sprite):
     # Slaves of the OverLord who work for him tiredlessly

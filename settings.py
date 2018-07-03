@@ -21,7 +21,11 @@ CYAN = (0, 255, 255)
 # Score font size
 SCORE_FONT_SIZE = 25
 SCORE_LOCATION = (WIDTH/2, 10)
-GameOverScoreLocation = (WIDTH/2, HEIGHT/2) # center location of score
+
+# Game over font
+GAME_OVER_SIZE = 100
+GAME_OVER_LOCATION = (WIDTH/2, HEIGHT/2)
+GAME_OVER_SCORE_LOCATION = (WIDTH/2, HEIGHT/2 + 2*GAME_OVER_SIZE)
 
 # Default shields
 GALACTIAN_SHIELDS = 100
