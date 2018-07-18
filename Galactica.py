@@ -1,5 +1,4 @@
 # Importing libraries for the game mechanics
-import pygame
 from game_assets import * # importing all game assets
 
 player = Galactican("Aleena")
